@@ -4,6 +4,9 @@ import code.ColorCode
 
 data class CodeRGB(val red: Int, val green: Int, val blue: Int) : ColorCode<CodeRGB>(code) {
 
+    val hexcode: String = RGBCode.generateHexcode(red,green,blue)
+
+
     constructor(red: Number, green: Number, blue: Number) : this(red.toInt(),green.toInt(),blue.toInt())
 
     init {
@@ -19,11 +22,16 @@ data class CodeRGB(val red: Int, val green: Int, val blue: Int) : ColorCode<Code
 
 
     companion object{
+        fun from(formattedString: String): CodeRGB {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
+
         const val code = "COLOR-CODE : RGB"
     }
 }
 
 fun ColorCode.Companion.getRGB(red: Number,green: Number,blue: Number) : CodeRGB = CodeRGB(red,green,blue)
 
+fun ColorCode.Companion.getRGB(formattedString: String): CodeRGB = CodeRGB.from(formattedString)
 
 
