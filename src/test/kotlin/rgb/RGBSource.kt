@@ -49,3 +49,57 @@ fun generateStringToCodePairList(): List<Pair<String, CodeRGB>> {
 
     }.toList()
 }
+
+fun generateTripleIntPairList()
+        = listOf(
+    Triple(0,0,0) to        -16777216,  //Triple(0,0,0) to 0xFF000000
+    Triple(3,3,3) to        -16579837,  //Triple(3,3,3) to 0xFF030303
+    Triple(6,6,6) to        -16382458,  //Triple(6,6,6) to 0xFF060606
+    Triple(10,10,10) to     -16119286,  //Triple(10,10,10) to 0xFF0A0A0A
+    Triple(51,51,51) to     -13421773,  //Triple(51,51,51) to 0xFF333333
+    Triple(102,102,102) to  -10066330,  //Triple(102,102,102) to 0xFF666666
+    Triple(153,153,153) to  -6710887,   //Triple(153,153,153) to 0xFF999999
+    Triple(204,204,204) to  -3355444,   //Triple(204,204,204) to 0xFFCCCCCC
+    Triple(255,255,255) to  -1,         //Triple(255,255,255) to 0xFFFFFFFF
+    Triple(255,0,0) to      -65536,     //Triple(255,0,0) to 0xFFFF0000
+    Triple(0,255,0) to      -16711936,  //Triple(0,255,0) to 0xFF00FF00
+    Triple(0,0,255) to      -16776961,  //Triple(0,0,255) to 0xFF0000FF
+    Triple(255,255,0) to    -256,       //Triple(255,255,0) to 0xFFFFFF00
+    Triple(0,255,255) to    -16711681,  //Triple(0,255,255) to 0xFF00FFFF
+    Triple(255,0,255) to    -65281,     //Triple(255,0,255) to 0xFFFF00FF
+    Triple(0,127,255) to    -16744449,  //Triple(0,127,255) to 0xFF007FFF
+    Triple(127,0,255) to    -8453889,   //Triple(127,0,255) to 0xFF7F00FF
+    Triple(255,0,127) to    -65409,     //Triple(255,0,127) to 0xFFFF007F
+    Triple(255,127,0) to    -33024,     //Triple(255,127,0) to 0xFFFF7F00
+    Triple(127,255,0) to    -8388864,   //Triple(127,255,0) to 0xFF7FFF00
+    Triple(0,255,127) to    -16711809   //Triple(0,255,127) to 0xFF00FF7F
+)
+
+
+/*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ */

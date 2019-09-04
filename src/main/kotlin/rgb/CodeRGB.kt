@@ -6,7 +6,7 @@ import java.lang.NumberFormatException
 data class CodeRGB(val red: Int, val green: Int, val blue: Int) : ColorCode<CodeRGB>(code) {
 
     val hexcode: String = CodeRGBExt.generateHexcode(red,green,blue)
-
+    private val intCode: Int = 0xFF and 0xff shl 24 or (red and 0xff shl 16) or (green and 0xff shl 8) or (blue and 0xff)
 
     constructor(red: Number, green: Number, blue: Number) : this(red.toInt(),green.toInt(),blue.toInt())
 
@@ -20,6 +20,8 @@ data class CodeRGB(val red: Int, val green: Int, val blue: Int) : ColorCode<Code
     override fun getComplementaryColor(): CodeRGB {
         return CodeRGB(255-red,255-green,255-blue)
     }
+
+    fun toInt(): Int = intCode
 
 
     companion object{
@@ -36,9 +38,7 @@ data class CodeRGB(val red: Int, val green: Int, val blue: Int) : ColorCode<Code
 
             val code = CodeRGBExt.toFullCode(hexcode) ?: hexcode
 
-            code ?: throw IllegalArgumentException("wrong formatted hexcode in [$hexcode]")
-
-            val (redHex,greenHex,blueHex) = code.let{it: String ->
+            val (redHex,greenHex,blueHex) = code.let{
                 Triple("${it[1]}${it[2]}","${it[3]}${it[4]}","${it[5]}${it[6]}")
             }
 
