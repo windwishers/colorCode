@@ -49,6 +49,17 @@ data class CodeRGB(val red: Int, val green: Int, val blue: Int) : ColorCode<Code
             }
         }
 
+        /** Android Color Int 귝격에 맞는 Int 에 해당 하는 Int 값을 바탕으로 CodeRGB를 생성함.  */
+        fun from(intCode: Int) : CodeRGB {
+
+            //https://developer.android.com/reference/android/graphics/Color.html#decoding
+//            intCode shr 24 and 0xff // or color >>> 24  // RGB 에서 사용 하지 않음.
+            val red = intCode shr 16 and 0xff
+            val green = intCode shr 8 and 0xff
+            val blue = intCode and 0xff
+            return CodeRGB(red,green,blue)
+        }
+
         const val code = "COLOR-CODE : RGB"
     }
 }
@@ -57,4 +68,5 @@ fun ColorCode.Companion.getRGB(red: Number,green: Number,blue: Number) : CodeRGB
 
 fun ColorCode.Companion.getRGB(hexcode: String): CodeRGB = CodeRGB.from(hexcode)
 
-
+@Suppress("SpellCheckingInspection")
+fun ColorCode.Companion.getRGB(intcode: Int): CodeRGB = CodeRGB.from(intcode)
