@@ -5,7 +5,7 @@ import org.junit.Assert.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
-//TODO 보색 테스트.
+
 @RunWith(Parameterized::class)
 class CodeRGBComplementarityColorTest(val red : Int, val green: Int, val blue:Int,val complementRed : Int, val complementGreen: Int, val complementBlue:Int){
 

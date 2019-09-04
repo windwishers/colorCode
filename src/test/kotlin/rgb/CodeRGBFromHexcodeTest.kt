@@ -5,12 +5,25 @@ import org.hamcrest.CoreMatchers
 import org.hamcrest.CoreMatchers.*
 import org.junit.Assert
 import org.junit.Assert.assertThat
+
+import org.junit.Before
+import org.junit.BeforeClass
 import org.junit.Test
+import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 
 
-//TODO create from #RGB #RRGGBB 로 부터 잘 생성 되는지 확인 테스트.
-class CodeRGBFromFormattedStringTest(val formattedString : String,val expectedCode : CodeRGB) {
+@RunWith(Parameterized::class)
+class CodeRGBFromHexcodeTest(data : Pair<String,CodeRGB>) {
+
+    val expectedCode = data.second
+    val formattedString = data.first
+
+    @Before
+    fun prepare(){
+        println(formattedString)
+    }
+
 
     @Test
     fun codeRGBFromFormattedTest(){
@@ -34,7 +47,7 @@ class CodeRGBFromFormattedStringTest(val formattedString : String,val expectedCo
         fun data(): List<Pair<String,CodeRGB>>{
 
             return generateStringToCodePairList().flatMap {
-                return arrayListOf<Pair<String,CodeRGB>>().apply{
+                arrayListOf<Pair<String,CodeRGB>>().apply{
                     add(it.first.toUpperCase() to it.second)
                     add(it.first.toLowerCase() to it.second)
                     if(RGBCode.canShorten(it.first)){

@@ -1,6 +1,7 @@
 package rgb
 
 import code.ColorCode
+import java.lang.NumberFormatException
 
 data class CodeRGB(val red: Int, val green: Int, val blue: Int) : ColorCode<CodeRGB>(code) {
 
@@ -22,8 +23,31 @@ data class CodeRGB(val red: Int, val green: Int, val blue: Int) : ColorCode<Code
 
 
     companion object{
-        fun from(formattedString: String): CodeRGB {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+        fun from(hexcode: String): CodeRGB {
+
+            if (hexcode.length != 4 && hexcode.length != 7) {
+                throw IllegalArgumentException("hexcode wrong length /  [$hexcode]")
+            }
+
+            if (!hexcode.startsWith("#")) {
+                throw IllegalArgumentException("hexcode must start with # but hexcode is [$hexcode]")
+            }
+
+            //TODO toFullCode 내부에서 isShorten 을 처리하고 있기 때문에 코드를 제거 하는 것을 검토 할 것.
+            val code = if(RGBCode.isShorten(hexcode)) RGBCode.toFullCode(hexcode) else hexcode
+
+            code ?: throw IllegalArgumentException("wrong formatted hexcode in [$hexcode]")
+
+            val (redHex,greenHex,blueHex) = code.let{it: String ->
+                Triple("${it[1]}${it[2]}","${it[3]}${it[4]}","${it[5]}${it[6]}")
+            }
+
+            try {
+                return CodeRGB(redHex.toInt(16),greenHex.toInt(16),blueHex.toInt(16))
+            } catch (e: NumberFormatException) {
+                throw IllegalArgumentException("wrong hexcode contain [$hexcode]",e)
+            }
         }
 
         const val code = "COLOR-CODE : RGB"
@@ -32,6 +56,6 @@ data class CodeRGB(val red: Int, val green: Int, val blue: Int) : ColorCode<Code
 
 fun ColorCode.Companion.getRGB(red: Number,green: Number,blue: Number) : CodeRGB = CodeRGB(red,green,blue)
 
-fun ColorCode.Companion.getRGB(formattedString: String): CodeRGB = CodeRGB.from(formattedString)
+fun ColorCode.Companion.getRGB(hexcode: String): CodeRGB = CodeRGB.from(hexcode)
 
 

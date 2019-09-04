@@ -19,17 +19,16 @@ class RGBCode {
             }
         }
 
-        /** #FFF 형태로 단축 할수 있는 형태의 코드 이면 true 를 아니면 false  를 리턴 합니다.  */
-        fun canShorten(code : CodeRGB) : Boolean = canShorten(code.hexcode)
-
         /** #FFFFFF 를 #FFF 로 바꿔 반환 합니다. 변환 이 불가능한 경우 null 을 반환합니다. (예 #7F7F7F)   */
         fun toShorten(code : String) : String?{
             if(!canShorten(code)) return null
             return "#"+code[1]+code[3]+code[5]
         }
 
-        /** #FFFFFF 를 #FFF 로 바꿔 반환 합니다. 변환 이 불가능한 경우 null 을 반환합니다. (예 #7F7F7F)   */
-        fun toShorten(code : CodeRGB) : String? = toShorten(code.hexcode)
+        /** #FFF 를 #FFFFFF 로 바꿔 반환 합니다. 변환 이 불가능한 경우 null 을 반환합니다. (예 #7F7F7F)    */
+        fun toFullCode(code : String) : String? {
+            return if(isShorten(code)) "#"+code[1]+code[1]+code[2]+code[2]+code[3]+code[3] else null
+        }
 
         /** red green blue 를 받아서 hexcode 로 바꿔주는 겁니다.  */
         fun generateHexcode(red: Int, green: Int, blue: Int): String {
