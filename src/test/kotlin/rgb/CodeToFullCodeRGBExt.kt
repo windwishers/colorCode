@@ -7,7 +7,7 @@ import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 
 @RunWith(Parameterized::class)
-class RGBCodeToFullCode(data : Triple<String,Boolean,String>) {
+class CodeToFullCodeRGBExt(data : Triple<String,Boolean,String>) {
     val fullcode = data.first
     val canShorten = data.second
     val shortOrEmpty = data.third
@@ -17,9 +17,9 @@ class RGBCodeToFullCode(data : Triple<String,Boolean,String>) {
 
         // SRP abort.
         if(canShorten){
-            Assert.assertThat(RGBCode.toFullCode(shortOrEmpty),CoreMatchers.equalTo(fullcode))
+            Assert.assertThat(CodeRGBExt.toFullCode(shortOrEmpty),CoreMatchers.equalTo(fullcode))
         }else{
-            Assert.assertThat(RGBCode.toFullCode(shortOrEmpty),CoreMatchers.nullValue())
+            Assert.assertThat(CodeRGBExt.toFullCode(shortOrEmpty),CoreMatchers.nullValue())
         }
 
     }

@@ -1,13 +1,10 @@
 package rgb
 
 import code.ColorCode
-import org.hamcrest.CoreMatchers
 import org.hamcrest.CoreMatchers.*
-import org.junit.Assert
 import org.junit.Assert.assertThat
 
 import org.junit.Before
-import org.junit.BeforeClass
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
@@ -50,8 +47,8 @@ class CodeRGBFromHexcodeTest(data : Pair<String,CodeRGB>) {
                 arrayListOf<Pair<String,CodeRGB>>().apply{
                     add(it.first.toUpperCase() to it.second)
                     add(it.first.toLowerCase() to it.second)
-                    if(RGBCode.canShorten(it.first)){
-                        RGBCode.toShorten(it.first)?.let { hex ->
+                    if(CodeRGBExt.canShorten(it.first)){
+                        CodeRGBExt.toShorten(it.first)?.let { hex ->
                             add(hex to it.second)
                         }
 

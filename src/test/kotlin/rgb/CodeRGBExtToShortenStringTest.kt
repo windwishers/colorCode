@@ -1,6 +1,5 @@
 package rgb
 
-import org.hamcrest.CoreMatchers
 import org.hamcrest.CoreMatchers.*
 import org.junit.Assert
 import org.junit.Test
@@ -8,7 +7,7 @@ import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 
 @RunWith(Parameterized::class)
-class RGBCodeToShortenStringTest(data : Triple<String,Boolean,String>) {
+class CodeRGBExtToShortenStringTest(data : Triple<String,Boolean,String>) {
     val hexcode = data.first
     val isShorten = data.second
     val expected = data.third
@@ -16,7 +15,7 @@ class RGBCodeToShortenStringTest(data : Triple<String,Boolean,String>) {
     @Test
     fun toShortenStringTest(){
         // SRP 원칙이는 맞지 않는다고 보이지만 굳이 나눌 필요까지 못느껴서 넘김.
-        val shortCode = RGBCode.toShorten(hexcode)
+        val shortCode = CodeRGBExt.toShorten(hexcode)
 
 
         if(isShorten){

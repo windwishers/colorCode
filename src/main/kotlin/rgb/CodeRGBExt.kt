@@ -1,6 +1,6 @@
 package rgb
 
-class RGBCode {
+class CodeRGBExt {
 
     companion object{
 

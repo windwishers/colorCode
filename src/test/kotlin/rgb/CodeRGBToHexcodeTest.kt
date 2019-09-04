@@ -1,8 +1,6 @@
 package rgb
 
-import org.hamcrest.CoreMatchers
 import org.hamcrest.CoreMatchers.*
-import org.junit.Assert
 import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -25,7 +23,7 @@ class CodeRGBToHexcodeTest(data : Pair<CodeRGB,String>) {
     @Test
     fun rGBCodeGenHexcodeTest(){
 
-        val hexcode = RGBCode.generateHexcode(code.red,code.green,code.blue)
+        val hexcode = CodeRGBExt.generateHexcode(code.red,code.green,code.blue)
 
         assertThat(hexcode, equalTo(expected))
 

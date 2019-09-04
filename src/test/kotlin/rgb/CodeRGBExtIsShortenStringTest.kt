@@ -7,29 +7,35 @@ import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 
 @RunWith(Parameterized::class)
-class RGBCodeCanShortenStringTest(value :Pair<String,Boolean>) {
+class CodeRGBExtIsShortenStringTest(value :Pair<String,Boolean>) {
     private val hexString = value.first
     private val isShorten = value.second
 
     @Test
-    fun canShortenStringTest(){
+    fun isShortenStringTest(){
 
-        Assert.assertThat(RGBCode.canShorten(hexString),CoreMatchers.equalTo(isShorten))
+        Assert.assertThat(CodeRGBExt.isShorten(hexString), CoreMatchers.equalTo(isShorten))
     }
+
 
     companion object{
         @JvmStatic
         @Parameterized.Parameters
         fun data(): List<Pair<String,Boolean>>{
             return listOf(
-                "#FFFFFF" to true,
-                "#000000" to true,
-                "#FF0000" to true,
-                "#00FF00" to true,
-                "#0000FF" to true,
-                "#FFFF00" to true,
-                "#00FFFF" to true,
-                "#FF00FF" to true,
+                "#FFF" to true,
+                "#000" to true,
+                "#F00" to true,
+                "#0F0" to true,
+                "#00F" to true,
+                "#FF0" to true,
+                "#0FF" to true,
+                "#F0F" to true,
+                "F0F" to false,
+                "#007FF" to false,
+                "#0F" to false,
+                "#" to false,
+                "" to false,
                 "#007FFF" to false,
                 "#7F00FF" to false,
                 "#FF007F" to false,

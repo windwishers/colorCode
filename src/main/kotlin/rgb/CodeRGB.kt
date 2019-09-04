@@ -5,7 +5,7 @@ import java.lang.NumberFormatException
 
 data class CodeRGB(val red: Int, val green: Int, val blue: Int) : ColorCode<CodeRGB>(code) {
 
-    val hexcode: String = RGBCode.generateHexcode(red,green,blue)
+    val hexcode: String = CodeRGBExt.generateHexcode(red,green,blue)
 
 
     constructor(red: Number, green: Number, blue: Number) : this(red.toInt(),green.toInt(),blue.toInt())
@@ -35,7 +35,7 @@ data class CodeRGB(val red: Int, val green: Int, val blue: Int) : ColorCode<Code
             }
 
             //TODO toFullCode 내부에서 isShorten 을 처리하고 있기 때문에 코드를 제거 하는 것을 검토 할 것.
-            val code = if(RGBCode.isShorten(hexcode)) RGBCode.toFullCode(hexcode) else hexcode
+            val code = if(CodeRGBExt.isShorten(hexcode)) CodeRGBExt.toFullCode(hexcode) else hexcode
 
             code ?: throw IllegalArgumentException("wrong formatted hexcode in [$hexcode]")
 
