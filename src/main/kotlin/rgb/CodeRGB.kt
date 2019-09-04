@@ -34,8 +34,7 @@ data class CodeRGB(val red: Int, val green: Int, val blue: Int) : ColorCode<Code
                 throw IllegalArgumentException("hexcode must start with # but hexcode is [$hexcode]")
             }
 
-            //TODO toFullCode 내부에서 isShorten 을 처리하고 있기 때문에 코드를 제거 하는 것을 검토 할 것.
-            val code = if(CodeRGBExt.isShorten(hexcode)) CodeRGBExt.toFullCode(hexcode) else hexcode
+            val code = CodeRGBExt.toFullCode(hexcode) ?: hexcode
 
             code ?: throw IllegalArgumentException("wrong formatted hexcode in [$hexcode]")
 
