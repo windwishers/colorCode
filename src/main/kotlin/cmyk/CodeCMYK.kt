@@ -12,9 +12,9 @@ data class CodeCMYK(val cyan : Float, val magenta : Float,val yellow : Float,val
     }
 
 
-    override fun getComplementaryColor(): CodeCMYK {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    /** 해당 CMYK의 보색을 리턴 한다.   */
+    override fun getComplementaryColor(): CodeCMYK
+            = CodeCMYK(1.0f-cyan,1.0f-magenta,1.0f-yellow,key)
 
 
     companion object{
