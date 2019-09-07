@@ -17,9 +17,7 @@ data class CodeARGB(val alpha: Int, val red: Int, val green: Int, val blue: Int)
         }
     }
 
-    override fun getComplementaryColor(): CodeARGB {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun getComplementaryColor(): CodeARGB = CodeARGB(alpha,255-red,255- green,255- blue)
 
     companion object{
         const val code = "COLOR-CODE : ARGB"
