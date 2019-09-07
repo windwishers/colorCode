@@ -4,10 +4,12 @@ import code.ColorCode
 
 data class CodeARGB(val alpha: Int, val red: Int, val green: Int, val blue: Int) : ColorCode<CodeARGB>(code){
 
+    constructor(red: Int, green: Int,blue: Int) : this(255,red,green,blue)
+
     init {
 
-        if (alpha !in 0..100 ) {
-            throw IllegalArgumentException("alpha 의 입력 가능한 범위는 0..100 입니다. $alpha/$red/$green/$blue")
+        if (alpha !in 0..255 ) {
+            throw IllegalArgumentException("alpha 의 입력 가능한 범위는 0..255 입니다. $alpha/$red/$green/$blue")
         }
 
         if (red !in 0..255 || green !in 0..255 || blue !in 0..255 ) {
@@ -26,3 +28,4 @@ data class CodeARGB(val alpha: Int, val red: Int, val green: Int, val blue: Int)
 }
 
 fun ColorCode.Companion.getARGB(alpha: Int,red: Int,green: Int,blue: Int) : CodeARGB = CodeARGB(alpha,red,green,blue)
+fun ColorCode.Companion.getARGB(red: Int,green: Int,blue: Int) : CodeARGB = CodeARGB(red,green,blue)
