@@ -9,7 +9,7 @@ data class CodeARGB(val alpha: Int, val red: Int, val green: Int, val blue: Int)
     constructor(red: Int, green: Int, blue: Int) : this(255,red,green,blue)
 
     val hexcode: String = ("#" + (alpha toHex 2) + (red toHex 2) + (green toHex 2) + (blue toHex 2)).toUpperCase()
-
+    val intcode: Int = alpha and 0xff shl 24 or (red and 0xff shl 16) or (green and 0xff shl 8) or (blue and 0xff)
     init {
 
         if (alpha !in 0..255 ) {
@@ -22,6 +22,7 @@ data class CodeARGB(val alpha: Int, val red: Int, val green: Int, val blue: Int)
     }
 
     override fun getComplementaryColor(): CodeARGB = CodeARGB(alpha,255-red,255- green,255- blue)
+    fun toInt(): Int = intcode
 
     companion object{
         fun from(hexcode: String): CodeARGB {
