@@ -39,3 +39,5 @@ object HEX {
 
     }
 }
+
+infix fun Int.toHex(len: Int): String? = this.toString(16).padStart(len,'0')

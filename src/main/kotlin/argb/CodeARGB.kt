@@ -1,11 +1,14 @@
 package argb
 
 import code.ColorCode
+import code.toHex
 
 
 data class CodeARGB(val alpha: Int, val red: Int, val green: Int, val blue: Int) : ColorCode<CodeARGB>(code){
 
-    constructor(red: Int, green: Int,blue: Int) : this(255,red,green,blue)
+    constructor(red: Int, green: Int, blue: Int) : this(255,red,green,blue)
+
+    val hexcode: String = ("#" + (alpha toHex 2) + (red toHex 2) + (green toHex 2) + (blue toHex 2)).toUpperCase()
 
     init {
 
@@ -55,6 +58,8 @@ data class CodeARGB(val alpha: Int, val red: Int, val green: Int, val blue: Int)
     }
 
 }
+
+
 
 fun ColorCode.Companion.getARGB(alpha: Int,red: Int,green: Int,blue: Int) : CodeARGB = CodeARGB(alpha,red,green,blue)
 fun ColorCode.Companion.getARGB(red: Int,green: Int,blue: Int) : CodeARGB = CodeARGB(red,green,blue)
